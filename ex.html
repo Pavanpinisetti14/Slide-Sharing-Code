@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <title>Document</title>
+    <style>
+        .back {
+            position: relative;
+            width: 100%;
+            /* max-width: 100%; */
+            height: 400px;
+            animation: change 2s  ease-in infinite;
+        }
+        @keyframes change {
+            from{ transform: scale(1.1);}
+            to{ transform: scale(1.15);}
+        }
+        .slider-btns{
+            border: 2px solid transparent;
+            padding: 110px 30px;
+            font-size: 30px;
+            font-weight: bold;
+            background-color: transparent;
+        }
+        .right-btn{
+            position: absolute;
+            bottom: 250px;
+            left: 10px;
+            padding: 10px 20px;
+        }
+        .left-btn{
+            position: absolute;
+            bottom: 250px;
+            right: 10px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="back">
+
+    </div>
+    <div class="right-btn">
+        <button class="slider-btns" onclick="rightbtn()"><i class="fa-solid fa-chevron-left" id="btn_left"></i></button>
+    </div>
+    <div class="left-btn">
+        <button class="slider-btns" onclick="leftbtn()"><i class="fa-solid fa-chevron-right" id="btn_right"></i></button>
+    </div> 
+    <script>
+        let i = 1;
+        let img = document.querySelector(".back");
+        let colors = ["pic1.jpg","pic2.jpg","pic3.jpg"];
+        img.style.backgroundImage = "url('"+colors[0]+"')";
+        setInterval(() => {
+            img.style.backgroundImage = "url('"+colors[i]+"')";
+            i++;
+            if(i==3){
+                i = 0;
+            }
+        }, 2000);
+        function leftbtn(){
+            if(i < 3){
+                i+=1
+                img.style.transition = "1s";
+                img.style.backgroundImage = "url('"+colors[i]+"')";
+            }
+            
+        }
+
+        function rightbtn(){
+            if(i > 0){
+                i-=1
+                img.style.transition = "1s";
+                img.style.backgroundImage = "url('"+colors[i]+"')";
+            }
+            
+        }
+    </script>
+</body>
+</html>
